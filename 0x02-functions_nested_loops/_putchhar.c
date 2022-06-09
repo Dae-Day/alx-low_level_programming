@@ -1,8 +1,14 @@
 #include "main.h"
 
+/**
+  * main - block code
+  *
+  * Return: 0
+  */
+
 int main(void)
 {
-	char x[] = _putchar(char c);
+	char x[] = "_putchar";
 	int i;
 
 	for (i = 0; i < 8; i++)
@@ -12,4 +18,5 @@ int main(void)
 	_putchar('\n');
 	return (0);
 }
+
 
