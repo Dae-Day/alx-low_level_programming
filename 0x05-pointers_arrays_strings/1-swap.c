@@ -1,13 +1,21 @@
-#include "main.h"
+#include <stdio.h>
+
+void swap_int(int *, int *);
 
 /**
- * swap_int - Swaps the values of two integers.
- * @a: The first integer to be swapped.
- * @b: The second integer to be swapped.
+ * main - check the code for Holberton School students.
+ *
+ * Return: Always 0.
  */
-void swap_int(int *a, int *b)
+int main(void)
 {
-	int tmp = *a;
-	*a = *b;
-	*b = tmp;
+	int a;
+	int b;
+
+	a = 98;
+	b = 42;
+	printf("%d, %d\n", a, b);
+	swap_int(&a, &b);
+	printf("%d, %d\n", a, b);
+	return (0);
 }
