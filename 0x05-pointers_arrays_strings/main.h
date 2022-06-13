@@ -13,3 +13,7 @@ void print_array(int *a, int n);
 char *_strcpy(char *dest, char *src);
 int _atoi(char *s);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3ea9fbc54ea4db395142a9bfe561c02e3d6839a2
