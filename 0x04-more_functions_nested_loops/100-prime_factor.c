@@ -1,26 +1,22 @@
-#include "main.h"
+#include <stdio.h>
+#include <math.h>
 /**
- * print_number - the entry point
- * @n: he number to check
- * Return: void
+ * main - the entry point
+ * Return: 0
  */
-void print_number(int n)
+int main(void)
 {
-	unsigned int i = 0;
+	long int i = 612852475143;
+	long int j;
 
-	if (n < 0)
+	for (j = 2; j < i; j++)
 	{
-		i = -n;
-		_putchar('-');
+		if (i % j == 0)
+		{
+			i = i / j;
+		}
 	}
-	else
-	{
-		i = n;
-	}
-	if (i / 10)
-	{
-		print_number(i / 10);
-	}
-	_putchar((i % 10) + '0');
+	printf("%ld\n", j);
 
+	return (0);
 }
