@@ -1,3 +1,8 @@
+/**
+ * 6-cap_string
+ */
+
+
 #include "main.h"
 #include <stdio.h>
 
