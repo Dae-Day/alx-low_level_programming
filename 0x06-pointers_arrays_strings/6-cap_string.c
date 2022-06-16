@@ -1,24 +1,44 @@
-/**
- * 6-cap_string
+/*
+ *File: 6-cap_string.c
+ *
  */
-
 
 #include "main.h"
-#include <stdio.h>
 
 /**
- * cap_string: Capitalize all words of a string
- * @s
+ *cap_string - Capitalizes all words of a string.
+ *@str: The string to be capitalized.
  *
- * Return : char value
+ *Return: A pointer to the changed string.
  */
-char *cap_string(char *s)
+char *cap_string(char *str)
 {
-        int a = 0, i;
-        int cspc = 13;
-        char spc[] = {32, '\t', '\n', 44, ';', 46, '!', '?', '"', '(', ')', '{', '}'};
+	int index = 0;
 
-        while (s[a])
-        {
--- INSERT --         
+	while (str[index])
+	{
+		while (!(str[index] >= 'a' && str[index] <= 'z'))
+			index++;
+
+		if (str[index - 1] == ' ' ||
+		    str[index - 1] == '\t' ||
+		    str[index - 1] == '\n' ||
+		    str[index - 1] == ',' ||
+		    str[index - 1] == ';' ||
+		    str[index - 1] == '.' ||
+		    str[index - 1] == '!' ||
+		    str[index - 1] == '?' ||
+		    str[index - 1] == '"' ||
+		    str[index - 1] == '(' ||
+		    str[index - 1] == ')' ||
+		    str[index - 1] == '{' ||
+		    str[index - 1] == '}' ||
+		    index == 0)
+			str[index] -= 32;
+
+		index++;
+	}
+
+	return (str);
+}
 
