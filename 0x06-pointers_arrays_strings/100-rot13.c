@@ -1,48 +1,52 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
- * rot13 - Encodes a string using rot13
- * @str: The string to be encoded
- * Return: A pointer to the encoded string
+ *print_buffer - Prints a buffer 10 bytes at a time, starting with
+ *               the byte position, then showing the hex content,
+ *               then displaying printable charcaters.
+ *@b: The buffer to be printed.
+ *@size: The number of bytes to be printed from the buffer.
  */
-char *rot13(char *str)
+void print_buffer(char *b, int size)
 {
-	int indx1 = 0, indx2;
-	char alphabet[52] = {'A', 'B', 'C', 'D', 'E', 'F',
-		'G', 'H', 'I', 'J', 'K', 'L',
-		'M', 'N', 'O', 'P', 'Q', 'R',
-		'S', 'T', 'U', 'V', 'W', 'X',
-		'Y', 'Z', 'a', 'b', 'c', 'd',
-		'e', 'f', 'g', 'h', 'i', 'j',
-		'k', 'l', 'm', 'n', 'o', 'p',
-		'q', 'r', 's', 't', 'u', 'v',
-		'w', 'x', 'y', 'z'};
-	char rot13key[52] = {'N', 'O', 'P', 'Q', 'R', 'S',
-		'T', 'U', 'V', 'W', 'X', 'Y',
-		'Z', 'A', 'B', 'C', 'D', 'E',
-		'F', 'G', 'H', 'I', 'J', 'K',
-		'L', 'M', 'n', 'o', 'p', 'q',
-		'r', 's', 't', 'u', 'v', 'w',
-		'x', 'y', 'z', 'a', 'b', 'c',
-		'd', 'e', 'f', 'g', 'h', 'i',
-		'j', 'k', 'l', 'm'};
+	int byte, index;
 
-	while (str[indx1])
+	for (byte = 0; byte < size; byte += 10)
 	{
-		for (indx2 = 0; indx2 < 52; indx2++)
+		printf("%08x: ", byte);
+
+		for (index = 0; index < 10; index++)
 		{
-			if (str[indx1] == alphabet[indx2])
-			{
-				if (str[indx1] == alphabet[indx2])
-				{
-					str[indx1] = rot13key[indx2];
-					break;
-				}
-			}
+			if ((index + byte) >= size)
+				printf("  ");
 
-			indx1++;
+			else
+				printf("%02x", *(b + index + byte));
 
+			if ((index % 2) != 0 && index != 0)
+				printf(" ");
 		}
 
-		return (str);
+		for (index = 0; index < 10; index++)
+		{
+			if ((index + byte) >= size)
+				break;
+
+			else if (*(b + index + byte) >= 31 &&
+				 *(b + index + byte) <= 126)
+				printf("%c", *(b + index + byte));
+
+			else
+				printf(".");
+		}
+
+		if (byte >= size)
+			continue;
+
+		printf("\n");
+	}
+
+	if (size <= 0)
+		printf("\n");
 }
