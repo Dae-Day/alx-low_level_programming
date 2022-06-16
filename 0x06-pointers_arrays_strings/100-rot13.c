@@ -1,52 +1,31 @@
 #include "main.h"
-#include <stdio.h>
-
 /**
- *print_buffer - Prints a buffer 10 bytes at a time, starting with
- *               the byte position, then showing the hex content,
- *               then displaying printable charcaters.
- *@b: The buffer to be printed.
- *@size: The number of bytes to be printed from the buffer.
- */
-void print_buffer(char *b, int size)
+* rot13 -  encodes a string using rot13
+* @str: string to be encoded
+*
+* Return: pointer to the encoded string
+*/
+char *rot13(char *str)
 {
-	int byte, index;
+	/* conversion tables */
+	char letters[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char values[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-	for (byte = 0; byte < size; byte += 10)
+	int i;
+	int j;
+
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		printf("%08x: ", byte);
-
-		for (index = 0; index < 10; index++)
+		for (j = 0; letters[j] != '\0'; j++)
 		{
-			if ((index + byte) >= size)
-				printf("  ");
-
-			else
-				printf("%02x", *(b + index + byte));
-
-			if ((index % 2) != 0 && index != 0)
-				printf(" ");
-		}
-
-		for (index = 0; index < 10; index++)
-		{
-			if ((index + byte) >= size)
+			if (str[i] == letters[j])
+			{
+				str[i] = values[j];
 				break;
-
-			else if (*(b + index + byte) >= 31 &&
-				 *(b + index + byte) <= 126)
-				printf("%c", *(b + index + byte));
-
-			else
-				printf(".");
+			}
 		}
-
-		if (byte >= size)
-			continue;
-
-		printf("\n");
 	}
 
-	if (size <= 0)
-		printf("\n");
+	return (str);
 }
+
