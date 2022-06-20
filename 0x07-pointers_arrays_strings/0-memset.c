@@ -1,28 +1,22 @@
 #include "main.h"
 
 /**
-* _strncat - concats two arrays
-*
-* @dest: destination of concat
-* @src: source array to concat
-* @n: amount of times to append
-*Return: char value
-*/
-
-char *_strncat(char *dest, char *src, int n)
+ * memset - Fills the first n bytes of the memory area
+ *          pointed to by @s with the constant byte @c.
+ * @s: A pointer to the memory area to be filled.
+ * @c: The character to fill the memory area with.
+ * @n: The number of bytes to be filled.
+ *
+ * Return: A pointer to the filled memory area @s.
+ */
+void *_memset(void *s, int c, size_t n)
 {
-	int i = 0;
-	int j;
+	unsigned int index;
+	unsigned char *memory = s, value = c;
 
-	while (dest[i] != '\0')
-	{
-		i++;
-	}
-	for (j = 0; j < n && src[j] != '\0'; j++)
-	{
-		dest[i] = src[j];
-		i++;
-	}
-	return (dest);
+	for (index = 0; index < n; index++)
+		memory[index] = value;
+
+	return (memory);
 }
 
