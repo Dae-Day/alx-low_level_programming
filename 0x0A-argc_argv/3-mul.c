@@ -1,21 +1,27 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
- * main - print multiplication of 2 numbers.
- * @argc: array lenth
- * @argc: array.
- *
- * Return: 0.
+ * main - multiplies two arguments
+ * @argc: The argument count
+ * @argv: The argument vector
+ * Return: 0 - i it recieves just two arguments and -1 if it does not
  */
+
 int main(int argc, char *argv[])
 {
-	if (argc != 3)
-	{
-		printf("Error\n");
-		return (1);
-	}
+	int total = 1, i;
 
-	printf("%d\n", atoi(argv[1]) * atoi(argv[2]));
-	return (0);
+
+	if (argc == 3)
+	{
+		for (i = 1; i < argc; i++)
+		{
+			total *= atoi(argv[i]);
+		}
+		printf("%d\n", total);
+		return (0);
+	}
+	printf("Error\n");
+	return (1);
 }
